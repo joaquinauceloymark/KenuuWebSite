@@ -1,0 +1,16 @@
+.faq-item {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.faq-question {
+  background-color: #f5f5f5;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.faq-answer {
+  padding: 10px;
+}

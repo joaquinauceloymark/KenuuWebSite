@@ -1,0 +1,295 @@
+<section class="pt-05 pt-lg-04 bg-registro">
+  <div class="container-fluid p-lg-5">
+    <!-- Breadcrumbs -->
+    <div class="row xs-hide-element">
+      <div class="col-12 col-lg-12">
+        <nav aria-label="breadcrumb">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Registro</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <div class="row">
+      <div class="col-12 col-lg-12 p-4 pb-5">
+        <div class="pb-3 pb-md-0">
+          <img
+            src="assets/images/iconos/wallet.svg"
+            alt="Programa-premios"
+            class="icons-size"
+          />
+        </div>
+
+        <h2 class="text-white pt-lg-3">Súmate al programa</h2>
+        <h3 class="h3 text-white mt-2">
+          Regístrate para obtener tu tarjeta digital, acumula y gana.
+
+          <p>
+            Si ya tienes una cuenta
+            <a class="text-white" href="iniciar-sesion.html"
+              ><u>Inicia sesión</u></a
+            >
+          </p>
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pt-5">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-12 col-lg-6">
+        <!-- Steps -->
+        <div class="stepwizard mb-5">
+          <div class="stepwizard-row setup-panel">
+            <div class="stepwizard-step">
+              <a
+                [ngClass]="{ active: step === 1, '': step !== 1 }"
+                class="active btn btn-circle btn-green"
+                ><i class="far fa-credit-card"></i
+              ></a>
+              <p class="h5">Paso 1</p>
+            </div>
+
+            <div class="stepwizard-step">
+              <a
+                [ngClass]="{ active: step === 2, '': step !== 2 }"
+                class="btn btn-circle btn-green"
+                ><i class="fas fa-user"></i
+              ></a>
+              <p class="h5">Paso 2</p>
+            </div>
+
+            <div class="stepwizard-step">
+              <a
+                [ngClass]="{ active: step === 3, '': step !== 3 }"
+                class="btn btn-circle btn-green"
+                ><i class="fas fa-shield-alt"></i
+              ></a>
+              <p class="h5">Paso 3</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form [formGroup]="formRegister" class="needs-validation" novalidate>
+          <!-- Step 1 -->
+          <div [formGroup]="step1Form">
+            <div class="setup-content" id="step-1" *ngIf="step === 1">
+              <h3 class="mb-3">Paso 1: Identificación</h3>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Nombres</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="name"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Apellido paterno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="lastName"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Apellido materno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="secondLastName"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Buttons -->
+              <button
+                class="btn btn-blue btn-block nextBtn"
+                type="button"
+                (click)="next()"
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div [formGroup]="step2Form">
+            <div class="setup-content" id="step-2" *ngIf="step === 2">
+              <h3 class="mb-3">Paso 2: Datos de usuario</h3>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Nombre de usuario</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="username"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Fecha de nacimiento</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="birthDate"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Número de teléfono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="phone"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="row gutter-1" *ngIf="step === 2">
+                <div class="col-6">
+                  <button
+                    class="btn btn-outline btn-100 btn-block"
+                    type="button"
+                    (click)="prev()"
+                  >
+                    Regresar
+                  </button>
+                </div>
+
+                <div class="col-6">
+                  <button
+                    class="btn btn-blue btn-block nextBtn"
+                    type="button"
+                    (click)="next()"
+                  >
+                    Continuar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div [formGroup]="step3Form">
+            <div class="setup-content" id="step-3" *ngIf="step === 3">
+              <h5 class="mb-3">Paso 3: Seguridad</h5>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Correo electrónico</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="email"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Contraseña</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="password"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group">
+                <label for="">Confirmar contraseña</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id=""
+                  required
+                  formControlName="passwordRepeat"
+                />
+                <div class="invalid-feedback">Campo requerido</div>
+              </div>
+
+              <!-- Input -->
+              <div class="form-group py-3">
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customControlAutosizing"
+                    required
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="customControlAutosizing"
+                    >Al registrarte, aceptas los
+                    <a href="#">Términos de uso</a> y el
+                    <a href="">Acuerdo de privacidad</a></label
+                  >
+                </div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="row gutter-1" *ngIf="step === 3">
+                <div class="col-6">
+                  <button
+                    class="btn btn-outline btn-100 btn-block"
+                    type="button"
+                    (click)="prev()"
+                  >
+                    Regresar
+                  </button>
+                </div>
+
+                <div class="col-6">
+                  <button
+                    type="submit"
+                    class="btn btn-blue btn-block"
+                    (click)="next()"
+                  >
+                    Registrarme
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

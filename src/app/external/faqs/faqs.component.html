@@ -1,0 +1,55 @@
+<section class="pt-05 pt-lg-04 bg-faq">
+  <div class="container-fluid p-lg-5">
+    <!-- Breadcrumbs -->
+    <div class="row xs-hide-element">
+      <div class="col-12 col-lg-12">
+        <nav aria-label="breadcrumb">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Preguntas frecuentes
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <div class="row">
+      <div class="col-12 col-lg-12 p-4 pb-5">
+        <div class="pb-3 pb-md-0">
+          <img
+            src="assets/images/iconos/faq.svg"
+            alt="preguntas-frecuentes"
+            class="icons-size"
+          />
+        </div>
+
+        <h2 class="text-white pt-lg-3">Preguntas frecuentes</h2>
+        <h3 class="h3 text-white mt-2">
+          Aquí encontrarás las respuestas a las dudas más comunes.
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-3">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <div id="accordion" class="accordion-1">
+          <!-- Accordion no.01 -->
+          <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+            <div class="faq-question" (click)="toggleFaq(i)">
+              {{ faq.question }}
+            </div>
+            <div *ngIf="faq.isOpen" class="faq-answer">
+              {{ faq.answer }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
