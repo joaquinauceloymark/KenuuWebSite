@@ -5,8 +5,20 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class SwalService {
-  Advertencia() {
+  AdvertenciaCamposObligatorios() {
     Swal.fire('Advertencia', 'Complete los campos obligatorios', 'warning');
+    return;
+  }
+
+  Advertencia(mensaje: string) {
+    const msj = mensaje ? mensaje : 'Siga las instrucciones';
+    Swal.fire('Advertencia', msj, 'warning');
+    return;
+  }
+
+  Error(mensaje?: string) {
+    const msj = mensaje ? mensaje : 'Siga las instrucciones';
+    Swal.fire('Error', msj, 'error');
     return;
   }
 }

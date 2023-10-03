@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  urlAPI: 'www.google.com.ar',
+  urlAPI: 'http://localhost:65000/api',
 };

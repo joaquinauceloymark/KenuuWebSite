@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { CookieService } from 'ngx-cookie-service';
 import { SwalService } from 'src/app/swal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,20 +21,21 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private cookies: CookieService,
-    private swalService: SwalService
+    private swalService: SwalService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['joaquin.auce@gmail.com', Validators.required],
+      password: ['Joaquin1', Validators.required],
       chkRememberMe: [false],
     });
   }
 
   login() {
     if (this.loginForm.invalid) {
-      this.swalService.Advertencia();
+      this.swalService.AdvertenciaCamposObligatorios();
     }
 
     //Seteo de cookies
@@ -55,12 +57,18 @@ export class LoginComponent implements OnInit {
     }
 
     let loginData: any = {
-      user: this.loginForm.get('username')?.value,
-      password: this.loginForm.get('password')?.value,
+      Username: this.loginForm.get('username')?.value,
+      Password: this.loginForm.get('password')?.value,
+      Password2: '',
     };
 
-    this.authService.login(loginData).subscribe((data) => {
-      console.log(data);
+    this.authService.login(loginData).subscribe((data: any) => {
+      if (data.success == true) {
+        sessionStorage.setItem('accountinfo', JSON.stringify(data.account));
+        this.router.navigateByUrl('/profile');
+      } else {
+        this.swalService.Error();
+      }
     });
   }
 }

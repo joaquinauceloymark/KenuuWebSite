@@ -12,7 +12,7 @@ export class AuthService {
   private isAuthenticated = false;
 
   login(loginData: any) {
-    const urlApi = `${this.urlApi}/Login`;
+    const urlApi = `${this.urlApi}/loginclient`;
     return this.http.post(urlApi, loginData);
   }
 
