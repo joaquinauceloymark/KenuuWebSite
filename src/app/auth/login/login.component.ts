@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { CookieService } from 'ngx-cookie-service';
 import { SwalService } from 'src/app/swal.service';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private cookies: CookieService,
     private swalService: SwalService,
-    private router: Router
+    private router: Router,
+    private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +66,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(loginData).subscribe((data: any) => {
       if (data.success == true) {
-        sessionStorage.setItem('accountinfo', JSON.stringify(data.account));
+        this.accountService.saveSessionData(data.account);
         this.router.navigateByUrl('/profile');
       } else {
         this.swalService.Error();

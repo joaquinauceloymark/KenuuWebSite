@@ -5,21 +5,21 @@
 
   <div class="card-body">
     <p class="card-text mb-1">
-      <span class="text-gris-extra-oscuro font-semibold">Nombre:</span> Daniel
-      Marqués
+      <span class="text-gris-extra-oscuro font-semibold">Nombre:</span>
+      {{ userInfo.firstName }} {{ userInfo.lastName }}
+      {{ userInfo.secondLastName }}
     </p>
     <p class="card-text mb-1">
       <span class="text-gris-extra-oscuro font-semibold">Identificación:</span>
-      0 0000 0000
+      {{ userInfo.identificacion }}
     </p>
     <p class="card-text">
       <span class="text-gris-extra-oscuro font-semibold"
         >Correo electrónico:</span
       >
-      mail@gmail.com
+      {{ userInfo.email }}
     </p>
     <br />
-    <button routerLink="edit-profile">Editar</button>
     <a
       routerlink="edit-profile"
       class="btn btn-secondary btn-block mb-2 mb-md-0"

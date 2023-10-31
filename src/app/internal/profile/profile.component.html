@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row justify-content-center align-items-center">
         <div class="col-12 col-lg-7 text-center">
-          <h1 class="h1 mb-4 text-white">¡Bienvenido Daniel!</h1>
+          <h1 class="h1 mb-4 text-white">¡Bienvenido {{ username }}!</h1>
           <div class="card border-0 bg-gradient-black">
             <div
               class="row card-body align-items-center justify-content-center"
@@ -16,13 +16,17 @@
               </div>
               <div class="col-4 col-md-6">
                 <div class="text-center text-md-right">
-                  <h5 class="text-white font-bold">650 pts</h5>
+                  <h5 class="text-white font-bold">
+                    {{ userInfo.pointsAvailable }} pts
+                  </h5>
                 </div>
               </div>
             </div>
           </div>
           <p class="text-center text-white mb-0 pb-0 pt-3 card-text">
-            Miembro desde el 23.09.2017 - Puntos válidos hasta el 23.09.2021.
+            Miembro desde el
+            {{ userInfo.enrollmentDate | date : "yyyy-MM-dd" }} - Puntos válidos
+            hasta el 23.09.2021.
           </p>
         </div>
       </div>
@@ -34,8 +38,10 @@
   <div class="container-fluid p-md-5">
     <div class="row">
       <div class="col-12 col-lg-4">
-        <app-points></app-points>
-        <app-personal-information></app-personal-information>
+        <app-points [userInfo]="userInfo"></app-points>
+        <app-personal-information
+          [userInfo]="userInfo"
+        ></app-personal-information>
         <app-download-wallet></app-download-wallet>
       </div>
       <div class="col-12 col-lg-8">
